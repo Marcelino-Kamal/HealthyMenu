@@ -1,0 +1,13 @@
+
+
+const HealthyMenuPage = () =>{
+    return(
+        <>
+       
+        
+        </>
+
+    )
+
+
+}
