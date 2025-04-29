@@ -1,12 +1,12 @@
 
-
+import icon from '../assets/meals icon.svg'
 
 const Header = () => {
         return(
-            <div className="bg-[#343c6a] p-4 flex justify-between items-center">
+          <div className="bg-[#edf3f7] p-4 flex justify-between items-center">
             {/* Header Title */}
-            <div className="text-white text-2xl font-semibold">
-              FitVora
+            <div className="text-[#3a53f6] text-2xl font-semibold">
+              <h1>Healthy Menu <img src={icon}/></h1>  
             </div>
       
             {/* Search Bar */}
