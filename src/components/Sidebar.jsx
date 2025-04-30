@@ -19,69 +19,69 @@ const Sidebar = () => {
   return (
     <div  className="bg-[#edf3f7] flex h-screen">
       {/* Sidebar */}
-      <div className="bg-[#ffffff] text-white w-64 p-5 space-y-6 flex-shrink-0 h-screen ">
+      <div className="bg-[#ffffff] text-white w-70 p-5 space-y-2 flex-shrink-0 h-[1150px]  ">
         <div className="flex items-center space-x-2 text-2xl font-bold text-[#343c6a] mb-10 fitvora">
          <img src={logo} className="h-8 w-8"/>
           FitVora
           </div>
         <ul className="flex flex-col space-y-20">
           <li className="flex items-center">
-            <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+            <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
             <img src={home} className="h-5 w-5" alt="Home" />
              <span>Home</span>
             </Link>
           </li>
           <li className="flex items-center">
-          <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+          <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
             <img src={mainworkout} className='h-5 w-5' alt='bar' />
             <span>WorkOuts</span>
             <img src={arr} className='h-5 w-5' alt='bar'/>
             </Link>
           </li>
           <li className="flex items-center">
-              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
                 <img src={Barbell} className='h-5 w-5' alt='bar'/>
                 <span>WorkOut 1</span>
               </Link>
           </li>
           <li className="flex items-center">
-              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
                 <img src={pushup} className='h-5 w-5' alt='push'/>
                 <span>WorkOut 2</span>
               </Link>
           </li>
           <li className="flex items-center">
-              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
                 <img src={situps} className='h-5 w-5' alt='situp'/>
                 <span>WorkOut 3</span>
               </Link>
           </li>
           <li className="flex items-center">
-              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
                 <img src={diet} className='h-5 w-5' alt='Diet'/>
                 <span>Diet Tips</span>
               </Link>
           </li>
           <li className={`flex items-center ${location.pathname === '/HealthyMenu' ? 'bg-[#f0f4ff] text-[#0056d2] font-bold rounded-lg' : '' }`}>
-            <Link to="/HealthyMenu" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+            <Link to="/HealthyMenu" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
             <img src={mealicon} className='h-5 w-5' alt='meal'/>
             <span>Healthy Menu</span>
             </Link>
           </li>
           <li className="flex items-center">
-              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
                 <img src={question} className='h-5 w-5' alt='question'/>
                 <span>Most Asked Questions</span>
               </Link>
           </li>
           <li className="flex items-center">
-              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+              <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-100px]">
                 <img src={setting} className='h-5 w-5' alt='setting'/>
                 <span>Setting</span>
               </Link>
           </li>
           <li className="flex items-center">
-             <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a]">
+             <Link to="#" className="flex items-center space-x-3 p-2 rounded hover:bg-gray-200 text-[#343c6a] mb-[-600px]">
                 <img src={logout} className='h-5 w-5' alt='logout'/>
                 <span>LogOut</span>
               </Link>
