@@ -6,137 +6,65 @@ import steps from "../assets/steps.svg";
 import calories from "../assets/calories.svg";
 import carbs from "../assets/carbs.svg";
 import fats from "../assets/fats.svg";
-import protiens from "../assets/protiens.svg"
-
-
-
+import protiens from "../assets/protiens.svg";
 
 const FeaturedMeal = () => {
   return (
     <>
-      <h2 className="myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">Featured Meals</h2>
-      <div className="flex gap-5 w-[60%] aspect-[16/5] rounded-lg bg-white ml-[1%]">
+      <h2 className="myfont font-semibold text-lg md:text-xl text-[#343C6A] ml-2 md:ml-4">Featured Meals</h2>
+      <div className="flex flex-col md:flex-row gap-4 md:gap-5 max-w-full md:w-[63%] rounded-lg bg-white ml-2 md:ml-4 p-4">
         {/* Left Image */}
-        <div className="w-2/5 m-[15px] aspect-square rounded-lg overflow-hidden h-full">
-          <img src={fimg} className="size-full object-center object-cover" />
+        <div className="w-full md:w-2/5 aspect-square rounded-lg overflow-hidden">
+          <img src={fimg} className="w-full h-full object-cover object-center" />
         </div>
+
         {/* Center Content */}
-        <div className=" h-full flex flex-col justify-between">
+        <div className="flex flex-col justify-between w-full md:w-[50%]">
           <article className="flex flex-col gap-3">
-            <h2 className="myfont font-[600] w-[50%] text-[22px] text-[#343C6A] mt-[10px]">
+            <h2 className="myfont font-semibold text-base md:text-lg text-[#343C6A]">
               Grilled Turkey Breast with Steamed Asparagus and Brown Rice
             </h2>
-            <div className="bg-red-400 rounded-lg myfont font-bold w-[10%] py-1 text-center text-[#343C6A] text-[14px]">
+            <div className="bg-red-400 rounded-lg myfont font-bold w-max px-3 py-1 text-[#343C6A] text-sm">
               Lunch
             </div>
-            {/* 4 Attr */}
-            <div className="my-4 grid grid-cols-2 grid-rows-2 gap-1 w-[50%]">
-              <div>
-                <article className="flex items-center object-cover justify-center">
-                  <img src={dif} />
-                  <div className="flex flex-col ">
-                    <span className="myfont font-[400] text-[11px] text-gray-500">
-                      Difficulty
-                    </span>
-                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
-                      Medium
-                    </span>
+
+            {/* Attributes Grid */}
+            <div className="grid grid-cols-2 gap-3 w-full md:w-[80%]">
+              {[{ img: dif, label: "Difficulty", value: "Medium" },
+                { img: hb, label: "Health Score", value: "85/100" },
+                { img: pot, label: "Cook Duration", value: "10 minutes" },
+                { img: steps, label: "Total Steps", value: "4 Steps" }]
+                .map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <img src={item.img} alt={item.label} className="w-5 h-5" />
+                    <div className="flex flex-col">
+                      <span className="myfont font-normal text-xs text-gray-500">{item.label}</span>
+                      <span className="myfont font-semibold text-sm text-[#343C6A]">{item.value}</span>
+                    </div>
                   </div>
-                </article>
-              </div>
-              <div>
-                <article className="flex items-center object-cover justify-center">
-                  <img src={hb} />
-                  <div className="flex flex-col ">
-                    <span className="myfont font-[400] text-[11px] text-gray-500">
-                      Health Score
-                    </span>
-                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
-                      85/100
-                    </span>
-                  </div>
-                </article>
-              </div>
-              <div>
-                <article className="flex items-center object-cover justify-center">
-                  <img src={pot} />
-                  <div className="flex flex-col ">
-                    <span className="myfont font-[400] text-[11px] text-gray-500">
-                      Cook Duration
-                    </span>
-                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
-                      10 minutes
-                    </span>
-                  </div>
-                </article>
-              </div>
-              <div>
-                <article className="flex items-center object-cover justify-center">
-                  <img src={steps} />
-                  <div className="flex flex-col ">
-                    <span className="myfont font-[400] text-[11px] text-gray-500">
-                     Total Steps
-                    </span>
-                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
-                      4 Steps
-                    </span>
-                  </div>
-                </article>
-              </div>
+                ))}
             </div>
           </article>
-          <button className="bg-[#2682C0] myfont font-[500] text-[14px] w-[50%] rounded-[20px] text-white py-3  ">
+          <button className="bg-[#2682C0] myfont font-medium text-sm w-full rounded-full text-white py-2 px-6 mt-4">
             Add Favourite
           </button>
         </div>
-        {/* Right Content */}
-        <div className="grid grid-cols-1 grid-rows-4  w-[10%]  gap-1 ml-[-32%] mt-[1%] mb-[1%]">
-          <div><article className="flex items-center object-cover justify-center bg-red-400 rounded-lg h-full">
-                  <img src={calories} />
-                  <div className="flex flex-col ">
-                    <span className="myfont font-[400] text-[11px] text-gray-500">
-                     calories
-                    </span>
-                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
-                    450 kcal
-                    </span>
-                  </div>
-                </article></div>
-          <div>
-          <article className="flex items-center object-cover justify-center bg-[#8676FE] rounded-lg h-full">
-                  <img src={carbs} />
-                  <div className="flex flex-col ">
-                    <span className="myfont font-[400] text-[11px] text-gray-500">
-                     carbs
-                    </span>
-                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
-                      40 gr
-                    </span>
-                  </div>
-                </article>
-          </div>
-          <div><article className="flex items-center object-cover justify-center bg-[#76B2DB] rounded-lg h-full">
-                  <img src={protiens} />
-                  <div className="flex flex-col ">
-                    <span className="myfont font-[400] text-[11px] text-gray-500">
-                     protiens
-                    </span>
-                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
-                      35 gr
-                    </span>
-                  </div>
-                </article></div>
-          <div><article className="flex items-center object-cover justify-center bg-[#FFA257] rounded-lg h-full">
-                  <img src={fats} />
-                  <div className="flex flex-col ">
-                    <span className="myfont font-[400] text-[11px] text-gray-500">
-                     Fats
-                    </span>
-                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
-                      12 gr
-                    </span>
-                  </div>
-                </article></div>
+
+        {/* Right Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-1 gap-2 w-full md:w-auto">
+          {[{ img: calories, label: "calories", value: "450 kcal", bg: "bg-red-400" },
+            { img: carbs, label: "carbs", value: "40 gr", bg: "bg-[#8676FE]" },
+            { img: protiens, label: "proteins", value: "35 gr", bg: "bg-[#76B2DB]" },
+            { img: fats, label: "fats", value: "12 gr", bg: "bg-[#FFA257]" }]
+            .map((item, idx) => (
+              <div key={idx} className={`flex items-center gap-2 p-2 rounded-lg ${item.bg}`}>
+                <img src={item.img} alt={item.label} className="w-5 h-5" />
+                <div className="flex flex-col">
+                  <span className="myfont font-normal text-xs text-gray-100">{item.label}</span>
+                  <span className="myfont font-semibold text-sm text-white">{item.value}</span>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
     </>
