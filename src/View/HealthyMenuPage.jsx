@@ -1,5 +1,6 @@
 import FeaturedMealCard from "../components/FeaturedMeal";
 import Header from "../components/Header";
+import MealList from "../components/MealList";
 
 
 const HealthyMenuPage = () =>{
@@ -7,6 +8,7 @@ const HealthyMenuPage = () =>{
         <>
             <Header></Header>
             <FeaturedMealCard/>
+            <MealList></MealList>
         </>
 
     )

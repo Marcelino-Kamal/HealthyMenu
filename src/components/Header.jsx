@@ -1,28 +1,31 @@
-
-import icon from '../assets/meals icon.svg'
+import icon from "../assets/meals icon.svg";
+import search from "../assets/search.svg";
 
 const Header = () => {
-        return(
-          <div className="bg-[#edf3f7] p-4 flex justify-between items-center">
-            {/* Header Title */}
-            <div className="text-[#3a53f6] text-2xl font-semibold">
-              <h1>Healthy Menu <img src={icon}/></h1>  
-            </div>
-      
-            {/* Search Bar */}
-            <div className="flex items-center border border-gray-300 rounded-lg p-2">
-              <input 
-                type="text" 
-                placeholder="Search..." 
-                className="outline-none px-2 py-1 w-64 text-gray-700" 
-              />
-              <button className="bg-[#ffd700] text-white px-4 py-2 rounded-lg ml-2">
-                Search
-              </button>
-            </div>
-          </div>
-        )
-   
-}
+  return (
+    <div className="bg-[#edf3f7] p-4 flex justify-between items-center w-[60%]">
+      {/* Header Title */}
+      <div className="text-[#3a53f6] text-2xl font-semibold">
+        <h1 className="flex flex-row">
+          Healthy Menu <img src={icon} />
+        </h1>
+      </div>
+
+      {/* Search Bar */}
+      <div className="relative w-full max-w-sm">
+        <img
+          src={search}
+          alt="Icon"
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+        />
+        <input
+          type="text"
+          placeholder="Search a meal..."
+          className="pl-10 py-2 w-full border border-gray-300 rounded-lg focus:outline-none bg-white"
+        />
+      </div>
+    </div>
+  );
+};
 
 export default Header;

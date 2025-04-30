@@ -14,7 +14,7 @@ import protiens from "../assets/protiens.svg"
 const FeaturedMeal = () => {
   return (
     <>
-      <h2 className="">Featured Meals</h2>
+      <h2 className="myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">Featured Meals</h2>
       <div className="flex gap-5 w-[60%] aspect-[16/5] rounded-lg bg-white ml-[1%]">
         {/* Left Image */}
         <div className="w-2/5 m-[15px] aspect-square rounded-lg overflow-hidden h-full">
