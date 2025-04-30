@@ -2,16 +2,10 @@
 
 @import "tailwindcss";
 
-.fitvora {
+.myfont {
     font-family: 'Poppins', sans-serif;
-    font-weight: 800; /* This sets the weight to 800 */
-    font-size: 32px;  /* This sets the size to 32px */
   }
-.card-Header{
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600; /* This sets the weight to 800 */
-  font-size: 22;  
-}
+
 
 :root {
   background-color: #edf3f7;
