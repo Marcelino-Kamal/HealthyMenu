@@ -2,12 +2,20 @@ import fimg from "../assets/food.png";
 import dif from "../assets/Diff.svg";
 import hb from "../assets/HB.svg";
 import pot from "../assets/cook-duration.svg";
-import steps from "../assets/steps.svg"
+import steps from "../assets/steps.svg";
+import calories from "../assets/calories.svg";
+import carbs from "../assets/carbs.svg";
+import fats from "../assets/fats.svg";
+import protiens from "../assets/protiens.svg"
+
+
+
+
 const FeaturedMeal = () => {
   return (
     <>
       <h2 className="">Featured Meals</h2>
-      <div className="flex gap-5 w-[76%] aspect-[16/5] rounded-lg bg-white ml-[1%]">
+      <div className="flex gap-5 w-[60%] aspect-[16/5] rounded-lg bg-white ml-[1%]">
         {/* Left Image */}
         <div className="w-2/5 m-[15px] aspect-square rounded-lg overflow-hidden h-full">
           <img src={fimg} className="size-full object-center object-cover" />
@@ -22,7 +30,7 @@ const FeaturedMeal = () => {
               Lunch
             </div>
             {/* 4 Attr */}
-            <div className="my-10 grid grid-cols-2 grid-rows-2 gap-1 w-[50%]">
+            <div className="my-4 grid grid-cols-2 grid-rows-2 gap-1 w-[50%]">
               <div>
                 <article className="flex items-center object-cover justify-center">
                   <img src={dif} />
@@ -77,16 +85,58 @@ const FeaturedMeal = () => {
               </div>
             </div>
           </article>
-          <button className="bg-[#2682C0] myfont font-[500] text-[14px] w-[50%] rounded-xl text-white py-4">
+          <button className="bg-[#2682C0] myfont font-[500] text-[14px] w-[50%] rounded-[20px] text-white py-3  ">
             Add Favourite
           </button>
         </div>
         {/* Right Content */}
-        <div className="grid grid-cols-1 grid-rows-4">
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
+        <div className="grid grid-cols-1 grid-rows-4  w-[10%]  gap-1 ml-[-32%] mt-[1%] mb-[1%]">
+          <div><article className="flex items-center object-cover justify-center bg-red-400 rounded-lg h-full">
+                  <img src={calories} />
+                  <div className="flex flex-col ">
+                    <span className="myfont font-[400] text-[11px] text-gray-500">
+                     calories
+                    </span>
+                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
+                    450 kcal
+                    </span>
+                  </div>
+                </article></div>
+          <div>
+          <article className="flex items-center object-cover justify-center bg-[#8676FE] rounded-lg h-full">
+                  <img src={carbs} />
+                  <div className="flex flex-col ">
+                    <span className="myfont font-[400] text-[11px] text-gray-500">
+                     carbs
+                    </span>
+                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
+                      40 gr
+                    </span>
+                  </div>
+                </article>
+          </div>
+          <div><article className="flex items-center object-cover justify-center bg-[#76B2DB] rounded-lg h-full">
+                  <img src={protiens} />
+                  <div className="flex flex-col ">
+                    <span className="myfont font-[400] text-[11px] text-gray-500">
+                     protiens
+                    </span>
+                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
+                      35 gr
+                    </span>
+                  </div>
+                </article></div>
+          <div><article className="flex items-center object-cover justify-center bg-[#FFA257] rounded-lg h-full">
+                  <img src={fats} />
+                  <div className="flex flex-col ">
+                    <span className="myfont font-[400] text-[11px] text-gray-500">
+                     Fats
+                    </span>
+                    <span className="myfont font-[600] text-[14px] text-[#343C6A]">
+                      12 gr
+                    </span>
+                  </div>
+                </article></div>
         </div>
       </div>
     </>
