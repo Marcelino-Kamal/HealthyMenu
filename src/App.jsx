@@ -1,4 +1,4 @@
-import './App.css'
+import './index.css'
 import Sidebar from './components/Sidebar'
 import HealthyMenuPage from './View/HealthyMenuPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
