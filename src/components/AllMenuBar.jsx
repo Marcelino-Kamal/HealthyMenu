@@ -1,18 +1,59 @@
-const AllMenuBar = () => {
+const AllMenuBar = ({ setChooseTag,selectedTag }) => {
   return (
     <>
       <div className="flex items-center justify-between bg-[#edf3f7] p-2 rounded-xl w-[64%]">
         {/* Filter Tabs */}
         <div className="flex items-center bg-white rounded-full px-5 py-1 space-x-10">
-          <button className="bg-blue-600 text-white text-sm font-semibold px-4 py-1 rounded-full">
+          <button
+            className={`px-4 py-1 rounded-full text-sm font-semibold ${
+              selectedTag === "All"
+                ? "bg-blue-600 text-white"
+                : "text-[#1e2a53] hover:bg-blue-100"
+            }`}
+            onClick={() => setChooseTag("All")}
+          >
             All
           </button>
-          <button className="text-[#1e2a53] text-sm font-medium">
+          <button
+            className={`px-4 py-1 rounded-full text-sm font-semibold ${
+              selectedTag === "Breakfast"
+                ? "bg-blue-600 text-white"
+                : "text-[#1e2a53] hover:bg-blue-100"
+            }`}
+            onClick={() => setChooseTag("Breakfast")}
+          >
             Breakfast
           </button>
-          <button className="text-[#1e2a53] text-sm font-medium">Lunch</button>
-          <button className="text-[#1e2a53] text-sm font-medium">Snack</button>
-          <button className="text-[#1e2a53] text-sm font-medium">Dinner</button>
+          <button
+            className={`px-4 py-1 rounded-full text-sm font-semibold ${
+              selectedTag === "Lunch"
+                ? "bg-blue-600 text-white"
+                : "text-[#1e2a53] hover:bg-blue-100"
+            }`}
+            onClick={() => setChooseTag("Lunch")}
+          >
+            Lunch
+          </button>
+          <button
+            className={`px-4 py-1 rounded-full text-sm font-semibold ${
+              selectedTag === "Snack"
+                ? "bg-blue-600 text-white"
+                : "text-[#1e2a53] hover:bg-blue-100"
+            }`}
+            onClick={() => setChooseTag("Snack")}
+          >
+            Snack
+          </button>
+          <button
+            className={`px-4 py-1 rounded-full text-sm font-semibold ${
+              selectedTag === "Dinner"
+                ? "bg-blue-600 text-white"
+                : "text-[#1e2a53] hover:bg-blue-100"
+            }`}
+            onClick={() => setChooseTag("Dinner")}
+          >
+            Dinner
+          </button>
         </div>
 
         {/* Sort Dropdown */}

@@ -1,8 +1,4 @@
 import { useState } from "react";
-import AllMenuBar from "./AllMenuBar";
-import toast from "../assets/toast.jpg";
-import salad from "../assets/salad.jpg";
-import shrimp from "../assets/shrimp.jpg";
 import diff from "../assets/Diff.svg";
 import cook from "../assets/cook-duration.svg";
 import steps from "../assets/steps.svg";
@@ -11,81 +7,12 @@ import carbs from "../assets/carbs.svg";
 import fats from "../assets/fats.svg";
 import protiens from "../assets/protiens.svg";
 
-const meals = [
-  {
-    id: 1,
-    title: "Avocado Toast with Poached Egg",
-    img: toast,
-    tag: "Breakfast",
-    color: "bg-blue-200",
-    difficulty: "Easy",
-    time: "15 min",
-    steps: "5 steps",
-    nutrition: {
-      calories: "320 kcal",
-      carbs: "30g",
-      protein: "14g",
-      fats: "18g",
-    },
-    healthScore: 9,
-  },
-  {
-    id: 2,
-    title: "Grilled Shrimp Tacos with Mango Salsa",
-    img: shrimp,
-    tag: "Lunch",
-    color: "bg-[#F44C4C]",
-    difficulty: "Medium",
-    time: "30 min",
-    steps: "8 steps",
-    nutrition: {
-      calories: "400 kcal",
-      carbs: "45g",
-      protein: "28g",
-      fats: "12g",
-    },
-    healthScore: 8,
-  },
-  {
-    id: 3,
-    title: "Baked Chicken Breast with Quinoa and Kale",
-    img: salad,
-    tag: "Dinner",
-    color: "bg-[#8676FE]",
-    difficulty: "Medium",
-    time: "1 hour",
-    steps: "25 steps",
-    nutrition: {
-      calories: "480 kcal",
-      carbs: "50g",
-      protein: "40g",
-      fats: "15g",
-    },
-    healthScore: 9,
-  },
-  {
-    id: 4,
-    title: "Salad",
-    img: salad,
-    tag: "Snack",
-    color: "bg-[#FFA257]",
-    difficulty: "Easy",
-    time: "45 min",
-    steps: "18 steps",
-    nutrition: {
-      calories: "280 kcal",
-      carbs: "38g",
-      protein: "10g",
-      fats: "7g",
-    },
-    healthScore: 5,
-  },
-];
-
-
-const MealList = () => {
+const MealList = ({ data, selectedTag }) => {
   const [favourites, setFavourites] = useState([]);
-
+  const filter =
+    selectedTag === "All"
+      ? data
+      : data.filter((item) => item.tag === selectedTag);
   const handleAdd = (meal) => {
     if (!favourites.some((fav) => fav.id === meal.id)) {
       setFavourites([...favourites, meal]);
@@ -187,13 +114,12 @@ const MealList = () => {
 
   return (
     <>
-      <h2 className="mt-[1%] myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">
-        All Menu
-      </h2>
-      <AllMenuBar />
-
       <div className="flex">
-        <div className="flex-1">{meals.map((meal) => renderCard(meal))}</div>
+        <div className="flex-1">
+          {data
+            .filter((meal) => selectedTag === "All" || meal.tag === selectedTag)
+            .map((meal) => renderCard(meal))}
+        </div>
 
         <div className="w-[35%] max-w-[600px] bg-[#edf3f7] p-4  h-full mt-[-600px] ">
           <h2 className="text-2xl font-bold text-[#343C6A] mb-4 text-center ">
@@ -204,9 +130,7 @@ const MealList = () => {
           ) : (
             <p className="text-gray-500 text-center">No favourites yet.</p>
           )}
-          
         </div>
-        
       </div>
     </>
   );
