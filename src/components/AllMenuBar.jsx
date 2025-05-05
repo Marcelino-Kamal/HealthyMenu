@@ -1,4 +1,4 @@
-const AllMenuBar = ({ setChooseTag,selectedTag }) => {
+const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
   return (
     <>
       <div className="flex items-center justify-between bg-[#edf3f7] p-2 rounded-xl w-[64%]">
@@ -59,11 +59,11 @@ const AllMenuBar = ({ setChooseTag,selectedTag }) => {
         {/* Sort Dropdown */}
         <div className="flex items-center space-x-2">
           <span className="text-sm text-gray-500">Sort by:</span>
-          <select className="bg-white border border-gray-300 text-sm rounded-md px-3 py-1 text-gray-700 focus:outline-none">
-            <option>Calories</option>
-            <option>Protein</option>
-            <option>Carbs</option>
-            <option>Fats</option>
+          <select className="bg-white border border-gray-300 text-sm rounded-md px-3 py-1 text-gray-700 focus:outline-none" onChange={(e) => setSortOption(e.target.value)}>
+            <option value="calories">Calories</option>
+            <option value="protein">Protein</option>
+            <option value="carbs">Carbs</option>
+            <option value="fats">Fats</option>
           </select>
         </div>
       </div>

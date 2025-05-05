@@ -7,7 +7,7 @@ import carbs from "../assets/carbs.svg";
 import fats from "../assets/fats.svg";
 import protiens from "../assets/protiens.svg";
 
-const MealList = ({ data, selectedTag }) => {
+const MealList = ({ data, selectedTag,sortOption }) => {
   const [favourites, setFavourites] = useState([]);
   const filter =
     selectedTag === "All"
@@ -116,8 +116,13 @@ const MealList = ({ data, selectedTag }) => {
     <>
       <div className="flex">
         <div className="flex-1">
-          {data
+          {[...data]
             .filter((meal) => selectedTag === "All" || meal.tag === selectedTag)
+            .sort((a, b) => {
+              const aVal = parseFloat(a.nutrition[sortOption.toLowerCase()]);
+              const bVal = parseFloat(b.nutrition[sortOption.toLowerCase()]);
+              return bVal - aVal;
+            })
             .map((meal) => renderCard(meal))}
         </div>
 

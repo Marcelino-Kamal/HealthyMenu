@@ -80,6 +80,7 @@ const meals = [
 
 const HealthyMenuPage = () => {
     const [selectedTag,setChooseTag] = useState("All");
+    const [sortOption , setSortOption] = useState("calories");
   return (
     <>
       <Header></Header>
@@ -87,8 +88,8 @@ const HealthyMenuPage = () => {
       <h2 className="mt-[1%] myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">
         All Menu
       </h2>
-      <AllMenuBar setChooseTag = {setChooseTag} selectedTag={selectedTag}  />
-      <MealList data={meals} selectedTag={selectedTag}></MealList>
+      <AllMenuBar setChooseTag = {setChooseTag} selectedTag={selectedTag} setSortOption={setSortOption}  />
+      <MealList data={meals} selectedTag={selectedTag} sortOption={sortOption}></MealList>
     </>
   );
 };
