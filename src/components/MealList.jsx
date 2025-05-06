@@ -7,21 +7,7 @@ import carbs from "../assets/carbs.svg";
 import fats from "../assets/fats.svg";
 import protiens from "../assets/protiens.svg";
 
-const MealList = ({ data, selectedTag,sortOption }) => {
-  const [favourites, setFavourites] = useState([]);
-  const filter =
-    selectedTag === "All"
-      ? data
-      : data.filter((item) => item.tag === selectedTag);
-  const handleAdd = (meal) => {
-    if (!favourites.some((fav) => fav.id === meal.id)) {
-      setFavourites([...favourites, meal]);
-    }
-  };
-
-  const handleRemove = (id) => {
-    setFavourites(favourites.filter((meal) => meal.id !== id));
-  };
+const MealList = ({ data, selectedTag, sortOption ,favourites,handleAdd,handleRemove}) => {
 
   const renderCard = (meal, isFavourite = false) => (
     <div

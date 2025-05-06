@@ -79,17 +79,44 @@ const meals = [
 ];
 
 const HealthyMenuPage = () => {
-    const [selectedTag,setChooseTag] = useState("All");
-    const [sortOption , setSortOption] = useState("calories");
+  const [favourites, setFavourites] = useState([]);
+
+  const handleAdd = (meal) => {
+    if (!favourites.some((fav) => fav.id === meal.id)) {
+      setFavourites([...favourites, meal]);
+    }
+  };
+
+  const handleRemove = (id) => {
+    setFavourites(favourites.filter((meal) => meal.id !== id));
+  };
+  const [selectedTag, setChooseTag] = useState("All");
+  const [sortOption, setSortOption] = useState("calories");
   return (
     <>
       <Header></Header>
-      <FeaturedMealCard />
+      <FeaturedMealCard
+       data={meals}
+       favourites={favourites}
+       handleAdd={handleAdd}
+       handleRemove={handleRemove}
+        />
       <h2 className="mt-[1%] myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">
         All Menu
       </h2>
-      <AllMenuBar setChooseTag = {setChooseTag} selectedTag={selectedTag} setSortOption={setSortOption}  />
-      <MealList data={meals} selectedTag={selectedTag} sortOption={sortOption}></MealList>
+      <AllMenuBar
+        setChooseTag={setChooseTag}
+        selectedTag={selectedTag}
+        setSortOption={setSortOption}
+      />
+      <MealList
+        data={meals}
+        selectedTag={selectedTag}
+        sortOption={sortOption}
+        favourites={favourites}
+        handleAdd={handleAdd}
+        handleRemove={handleRemove}
+      ></MealList>
     </>
   );
 };
