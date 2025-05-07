@@ -132,7 +132,7 @@ const MealList = ({
             .map((mealx) => renderCard(mealx))}
         </div>
 
-        <div className="w-[35%] max-w-[600px] bg-[#edf3f7] p-4  h-full mt-[-600px] ">
+        <div className="w-[35%] max-w-[600px] bg-[#edf3f7] p-4">
           <h2 className="text-2xl font-bold text-[#343C6A] mb-4 text-center ">
             Favourite Meals
           </h2>
@@ -149,10 +149,16 @@ const MealList = ({
                     favselectedTag === "All" || mealx.meal === favselectedTag
                 )
                 .sort((a, b) => {
-                  if(favSortOption === "easy"){
-                    return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
-                  }else if(favSortOption === "hard"){
-                    return difficultyOrder[b.difficulty] - difficultyOrder[a.difficulty];
+                  if (favSortOption === "easy") {
+                    return (
+                      difficultyOrder[a.difficulty] -
+                      difficultyOrder[b.difficulty]
+                    );
+                  } else if (favSortOption === "hard") {
+                    return (
+                      difficultyOrder[b.difficulty] -
+                      difficultyOrder[a.difficulty]
+                    );
                   }
                 })
                 .map((mealx) => renderCard(mealx, true))}
