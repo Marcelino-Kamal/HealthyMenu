@@ -13,14 +13,12 @@ const HealthyMenuPage = () => {
   const [error, setError] = useState(null);
 
   const jwtToken = import.meta.env.VITE_JWT_TOKEN;
-  
 
- 
   useEffect(() => {
     const getMeals = async () => {
       try {
         const mealsData = await fetchMeals(jwtToken);
-        setMeals(mealsData); 
+        setMeals(mealsData);
       } catch (err) {
         setError("Failed to fetch meals");
         console.error("Error fetching meals:", err);
@@ -41,7 +39,7 @@ const HealthyMenuPage = () => {
   };
 
   return (
-    <>
+    <div className="w-full">
       <Header></Header>
       {error ? (
         <div className="text-red-500">{error}</div>
@@ -68,11 +66,10 @@ const HealthyMenuPage = () => {
             favourites={favourites}
             handleAdd={handleAdd}
             handleRemove={handleRemove}
-           
           />
         </>
       )}
-    </>
+    </div>
   );
 };
 
