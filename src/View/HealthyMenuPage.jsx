@@ -11,8 +11,8 @@ const HealthyMenuPage = () => {
   const [sortOption, setSortOption] = useState("calories");
   const [error, setError] = useState(null);
 
-  const jwtToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE5NDNmZDgxYzA3ZjE0OTQ1NWJmYTQiLCJpYXQiOjE3NDY0ODg2MjR9.wtsxZMWtW99WK5QRfy_5kwoVpf15W1Q3s7LCFDI2UEA"; // Replace this with the actual JWT token
+  const jwtToken = import.meta.env.VITE_JWT_TOKEN;
+  
 
  
   useEffect(() => {
