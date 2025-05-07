@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import MealList from "../components/MealList";
 import AllMenuBar from "../components/AllMenuBar";
 import { fetchMeals } from "../API/MealService";
+
 const HealthyMenuPage = () => {
   const [meals, setMeals] = useState([]);
   const [favourites, setFavourites] = useState([]);
@@ -30,7 +31,7 @@ const HealthyMenuPage = () => {
   }, [jwtToken]); // The hook will run once when the component mounts
 
   const handleAdd = (meal) => {
-    if (!favourites.some((fav) => fav.id === meal._id)) {
+    if (!favourites.some((fav) => fav._id === meal._id)) {
       setFavourites([...favourites, meal]);
     }
   };
@@ -67,6 +68,7 @@ const HealthyMenuPage = () => {
             favourites={favourites}
             handleAdd={handleAdd}
             handleRemove={handleRemove}
+           
           />
         </>
       )}

@@ -16,7 +16,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
           </button>
           <button
             className={`px-4 py-1 rounded-full text-sm font-semibold ${
-              selectedTag === "Breakfast"
+              selectedTag === "breakfast"
                 ? "bg-blue-600 text-white"
                 : "text-[#1e2a53] hover:bg-blue-100"
             }`}
@@ -26,7 +26,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
           </button>
           <button
             className={`px-4 py-1 rounded-full text-sm font-semibold ${
-              selectedTag === "Lunch"
+              selectedTag === "lunch"
                 ? "bg-blue-600 text-white"
                 : "text-[#1e2a53] hover:bg-blue-100"
             }`}
@@ -36,7 +36,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
           </button>
           <button
             className={`px-4 py-1 rounded-full text-sm font-semibold ${
-              selectedTag === "Snack"
+              selectedTag === "snack"
                 ? "bg-blue-600 text-white"
                 : "text-[#1e2a53] hover:bg-blue-100"
             }`}
@@ -46,7 +46,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
           </button>
           <button
             className={`px-4 py-1 rounded-full text-sm font-semibold ${
-              selectedTag === "Dinner"
+              selectedTag === "dinner"
                 ? "bg-blue-600 text-white"
                 : "text-[#1e2a53] hover:bg-blue-100"
             }`}

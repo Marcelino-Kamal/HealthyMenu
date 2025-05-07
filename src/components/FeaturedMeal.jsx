@@ -43,7 +43,14 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <h3 className="myfont font-semibold text-base md:text-lg text-[#343C6A]">
               {mealx.name}
             </h3>
-            <div className="bg-red-400 rounded-full myfont font-bold w-max px-3 py-1 text-[#343C6A] text-sm">
+            <div
+              className={`rounded-full myfont font-bold w-max px-3 py-1 text-[#343C6A] text-sm
+              ${mealx.meal === "breakfast" ? "bg-[#76B2DB]" : ""}
+              ${mealx.meal === "lunch" ? "bg-[#F44C4C]" : ""}
+              ${mealx.meal === "snacks" ? "bg-[#FFA257]" : ""}
+              ${mealx.meal === "dinner" ? "bg-[#8676FE]" : ""}
+              `}
+            >
               {mealx.meal.charAt(0).toUpperCase() + mealx.meal.slice(1)}
             </div>
             {/* Meal Details section */}
@@ -53,7 +60,8 @@ const FeaturedMeal = ({ data, handleAdd }) => {
                 <div>
                   <p className="text-xs text-gray-500 myfont">Difficulty</p>
                   <p className="text-sm font-semibold text-[#343C6A] myfont">
-                    {mealx.difficulty.charAt(0).toUpperCase() + mealx.difficulty.slice(1)}
+                    {mealx.difficulty.charAt(0).toUpperCase() +
+                      mealx.difficulty.slice(1)}
                   </p>
                 </div>
               </div>
@@ -89,13 +97,6 @@ const FeaturedMeal = ({ data, handleAdd }) => {
               </div>
             </div>
           </div>
-
-          <button
-            onClick={() => handleAdd(mealx)}
-            className="bg-[#2682C0] text-white font-medium myfont text-sm mt-4 py-2 px-6 rounded-full w-full"
-          >
-            Add to favourites
-          </button>
         </div>
 
         {/* Nutrition Section */}
@@ -105,7 +106,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <div className="flex flex-col">
               <p className="text-xs text-gray-100 myfont">Calories</p>
               <p className="text-sm font-semibold text-white myfont">
-                {mealx.calories}
+                {mealx.calories} Kcal
               </p>
             </div>
           </div>
@@ -115,7 +116,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <div className="flex flex-col">
               <p className="text-xs text-gray-100 myfont">Carbs</p>
               <p className="text-sm font-semibold text-white myfont">
-                {mealx.carbs}
+                {mealx.carbs}g carbs
               </p>
             </div>
           </div>
@@ -125,7 +126,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <div className="flex flex-col">
               <p className="text-xs text-gray-100 myfont">Protein</p>
               <p className="text-sm font-semibold text-white myfont">
-                {mealx.protein}
+                {mealx.protein}g protein
               </p>
             </div>
           </div>
@@ -135,12 +136,18 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <div className="flex flex-col">
               <p className="text-xs text-gray-100 myfont">Fats</p>
               <p className="text-sm font-semibold text-white myfont">
-                {mealx.fats}
+                {mealx.fats}g fats
               </p>
             </div>
           </div>
         </div>
       </div>
+      <button
+        onClick={() => handleAdd(mealx)}
+        className="bg-[#2682C0] text-white font-medium myfont text-sm mt-4 py-2 px-6 rounded-full w-full"
+      >
+        Add to favourites
+      </button>
     </SwiperSlide>
   );
   return (
@@ -178,6 +185,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
           meal={selectedMeal}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
+          handleAdd={handleAdd}
         />
       </div>
     </div>

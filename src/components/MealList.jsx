@@ -5,6 +5,8 @@ import calories from "../assets/calories.svg";
 import carbs from "../assets/carbs.svg";
 import fats from "../assets/fats.svg";
 import protiens from "../assets/protiens.svg";
+import { useState } from "react";
+import FavBar from "./FavBar";
 
 const MealList = ({
   data,
@@ -12,7 +14,15 @@ const MealList = ({
   favourites,
   handleAdd,
   handleRemove,
+  sortOption,
 }) => {
+  const [favSortOption, setfavSortOption] = useState("hard");
+  const [favselectedTag, setfavChooseTag] = useState("All");
+  const difficultyOrder = {
+    easy: 1,
+    medium: 2,
+    hard: 3,
+  };
   const renderCard = (mealx, isFavourite = false) => (
     <div
       key={mealx._id}
@@ -27,13 +37,19 @@ const MealList = ({
       <div className="flex-1">
         <div className="flex flex-wrap gap-2 mb-1">
           <span
-            className={`bg-red-500 text-xs font-semibold px-2 py-1 rounded w-[72px] h-[22px]`}
+            className={`text-xs font-semibold px-2 py-1 rounded-[6px] w-[53px] h-[22px]
+                   ${mealx.meal === "breakfast" ? "bg-[#76B2DB]" : ""}
+                   ${mealx.meal === "lunch" ? "bg-[#F44C4C]" : ""}
+                   ${mealx.meal === "snacks" ? "bg-[#FFA257]" : ""}
+                   ${mealx.meal === "dinner" ? "bg-[#8676FE]" : ""}
+              `}
           >
             {mealx.meal.charAt(0).toUpperCase() + mealx.meal.slice(1)}
           </span>
           <span className="bg-gray-100 text-gray-600 text-xs font-medium px-4 py-1 rounded flex flex-row items-center gap-1">
             <img src={diff} className="w-[20px] h-[20px]" />
-            {mealx.difficulty.charAt(0).toUpperCase() + mealx.difficulty.slice(1)}
+            {mealx.difficulty.charAt(0).toUpperCase() +
+              mealx.difficulty.slice(1)}
           </span>
           <span className="bg-gray-100 text-gray-600 text-xs font-medium px-4 py-1 rounded flex flex-row items-center gap-1">
             <img src={cook} className="w-[20px] h-[20px]" />
@@ -50,19 +66,19 @@ const MealList = ({
         <div className="mt-2 flex items-center text-sm text-gray-700 divide-x divide-orange-300">
           <div className="flex items-center gap-1 px-2">
             <img src={calories} className="w-4 h-4" />
-            {mealx.calories}
+            {mealx.calories} Kcal
           </div>
           <div className="flex items-center gap-1 px-2">
             <img src={carbs} className="w-4 h-4" />
-            {mealx.carbs}
+            {mealx.carbs}g carbs
           </div>
           <div className="flex items-center gap-1 px-2">
             <img src={protiens} className="w-4 h-4" />
-            {mealx.protein}
+            {mealx.protein}g protein
           </div>
           <div className="flex items-center gap-1 px-2">
             <img src={fats} className="w-4 h-4" />
-            {mealx.fats}
+            {mealx.fats}g fats
           </div>
         </div>
       </div>
@@ -111,9 +127,7 @@ const MealList = ({
               (mealx) => selectedTag === "All" || mealx.meal === selectedTag
             )
             .sort((a, b) => {
-              const aVal = a.sortOption;
-              const bVal = b.sortOption;
-              return bVal - aVal;
+              return b[sortOption] - a[sortOption];
             })
             .map((mealx) => renderCard(mealx))}
         </div>
@@ -123,7 +137,26 @@ const MealList = ({
             Favourite Meals
           </h2>
           {favourites.length > 0 ? (
-            favourites.map((mealx) => renderCard(mealx, true))
+            <>
+              <FavBar
+                setfavChooseTag={setfavChooseTag}
+                favselectedTag={favselectedTag}
+                setfavSortOption={setfavSortOption}
+              />
+              {[...favourites]
+                .filter(
+                  (mealx) =>
+                    favselectedTag === "All" || mealx.meal === favselectedTag
+                )
+                .sort((a, b) => {
+                  if(favSortOption === "easy"){
+                    return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
+                  }else if(favSortOption === "hard"){
+                    return difficultyOrder[b.difficulty] - difficultyOrder[a.difficulty];
+                  }
+                })
+                .map((mealx) => renderCard(mealx, true))}
+            </>
           ) : (
             <p className="text-gray-500 text-center">No favourites yet.</p>
           )}
