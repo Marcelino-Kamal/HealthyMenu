@@ -11,7 +11,7 @@ const FavouriteList = ({favourites,handleRemove }) => {
       };
     return(
         <>
-        <div className="w-[35%] max-w-[600px] bg-[#edf3f7] p-4">
+        <div className="w-full  bg-[#edf3f7] p-4">
           <h2 className="text-2xl font-bold text-[#343C6A] mb-4 text-center ">
             Favourite Meals
           </h2>

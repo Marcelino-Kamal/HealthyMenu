@@ -14,7 +14,7 @@ const FavBar = ({ setfavChooseTag, favselectedTag, setfavSortOption }) => {
         </select>
       </div>
       {/* Filter Tabs */}
-      <div className="flex items-center bg-white rounded-full px-5 py-1 space-x-10">
+      <div className="flex items-center bg-white rounded-full px-5 py-1 space-x-10 justify-between">
         <button
           className={`px-4 py-1 rounded-full text-sm font-semibold ${
             favselectedTag === "All"
