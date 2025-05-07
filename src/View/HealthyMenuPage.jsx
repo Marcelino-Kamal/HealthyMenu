@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import MealList from "../components/MealList";
 import AllMenuBar from "../components/AllMenuBar";
 import { fetchMeals } from "../API/MealService";
+import FavouriteList from "../components/FavouritesList";
 
 const HealthyMenuPage = () => {
   const [meals, setMeals] = useState([]);
@@ -39,37 +40,42 @@ const HealthyMenuPage = () => {
   };
 
   return (
-    <div className="w-full">
-      <Header></Header>
-      {error ? (
-        <div className="text-red-500">{error}</div>
-      ) : (
-        <>
-          <FeaturedMealCard
-            data={meals}
-            favourites={favourites}
-            handleAdd={handleAdd}
-            handleRemove={handleRemove}
+    <>
+      <div className="flex">
+        {/* 1st Section */}
+        <div className="w-full">
+          <Header></Header>
+          {error ? (
+            <div className="text-red-500">{error}</div>
+          ) : (
+            <>
+              <FeaturedMealCard data={meals} handleAdd={handleAdd} />
+              <h2 className="mt-[1%] myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">
+                All Menu
+              </h2>
+              <AllMenuBar
+                setChooseTag={setChooseTag}
+                selectedTag={selectedTag}
+                setSortOption={setSortOption}
+              />
+              <MealList
+                data={meals}
+                selectedTag={selectedTag}
+                sortOption={sortOption}
+                favourites={favourites}
+                handleAdd={handleAdd}
+                handleRemove={handleRemove}
+              />
+            </>
+          )}
+        </div>
+          {/* 2nd Section */}
+          <FavouriteList
+           favourites={favourites}
+           handleRemove={handleRemove}
           />
-          <h2 className="mt-[1%] myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">
-            All Menu
-          </h2>
-          <AllMenuBar
-            setChooseTag={setChooseTag}
-            selectedTag={selectedTag}
-            setSortOption={setSortOption}
-          />
-          <MealList
-            data={meals}
-            selectedTag={selectedTag}
-            sortOption={sortOption}
-            favourites={favourites}
-            handleAdd={handleAdd}
-            handleRemove={handleRemove}
-          />
-        </>
-      )}
-    </div>
+      </div>
+    </>
   );
 };
 
