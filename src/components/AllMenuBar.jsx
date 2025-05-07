@@ -20,7 +20,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
                 ? "bg-blue-600 text-white"
                 : "text-[#1e2a53] hover:bg-blue-100"
             }`}
-            onClick={() => setChooseTag("Breakfast")}
+            onClick={() => setChooseTag("Breakfast".toLowerCase())}
           >
             Breakfast
           </button>
@@ -30,7 +30,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
                 ? "bg-blue-600 text-white"
                 : "text-[#1e2a53] hover:bg-blue-100"
             }`}
-            onClick={() => setChooseTag("Lunch")}
+            onClick={() => setChooseTag("Lunch".toLowerCase())}
           >
             Lunch
           </button>
@@ -40,7 +40,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
                 ? "bg-blue-600 text-white"
                 : "text-[#1e2a53] hover:bg-blue-100"
             }`}
-            onClick={() => setChooseTag("Snack")}
+            onClick={() => setChooseTag("Snack".toLowerCase())}
           >
             Snack
           </button>
@@ -50,7 +50,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
                 ? "bg-blue-600 text-white"
                 : "text-[#1e2a53] hover:bg-blue-100"
             }`}
-            onClick={() => setChooseTag("Dinner")}
+            onClick={() => setChooseTag("Dinner".toLowerCase())}
           >
             Dinner
           </button>

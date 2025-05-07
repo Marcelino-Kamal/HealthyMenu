@@ -36,7 +36,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
               {meal.title}
             </h3>
             <div className="bg-red-400 rounded-full myfont font-bold w-max px-3 py-1 text-[#343C6A] text-sm">
-              {meal.tag}
+              {mealx.meal.charAt(0).toUpperCase() + mealx.meal.slice(1)}
             </div>
             {/* Meal Details section */}
             <div className="grid grid-cols-2 gap-4 mt-2">
@@ -45,7 +45,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
                 <div>
                   <p className="text-xs text-gray-500 myfont">Difficulty</p>
                   <p className="text-sm font-semibold text-[#343C6A] myfont">
-                    {meal.difficulty}
+                    {mealx.difficulty.charAt(0).toUpperCase() + mealx.difficulty.slice(1)}
                   </p>
                 </div>
               </div>
@@ -75,7 +75,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
                 <div>
                   <p className="text-xs text-gray-500 myfont">Total Steps</p>
                   <p className="text-sm font-semibold text-[#343C6A] myfont">
-                    {meal.steps}
+                    {mealx.steps.length} Steps
                   </p>
                 </div>
               </div>

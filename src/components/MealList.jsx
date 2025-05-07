@@ -11,7 +11,7 @@ const MealList = ({ data, selectedTag, sortOption ,favourites,handleAdd,handleRe
 
   const renderCard = (meal, isFavourite = false) => (
     <div
-      key={meal.id}
+      key={mealx._id}
       className="flex items-center justify-between bg-white shadow rounded-xl p-4 space-x-4 w-full max-w-5xl m-[10px]"
     >
       <img
@@ -25,11 +25,11 @@ const MealList = ({ data, selectedTag, sortOption ,favourites,handleAdd,handleRe
           <span
             className={`${meal.color} text-xs font-semibold px-2 py-1 rounded w-[72px] h-[22px]`}
           >
-            {meal.tag}
+            {mealx.meal.charAt(0).toUpperCase() + mealx.meal.slice(1)}
           </span>
           <span className="bg-gray-100 text-gray-600 text-xs font-medium px-4 py-1 rounded flex flex-row items-center gap-1">
             <img src={diff} className="w-[20px] h-[20px]" />
-            {meal.difficulty}
+            {mealx.difficulty.charAt(0).toUpperCase() + mealx.difficulty.slice(1)}
           </span>
           <span className="bg-gray-100 text-gray-600 text-xs font-medium px-4 py-1 rounded flex flex-row items-center gap-1">
             <img src={cook} className="w-[20px] h-[20px]" />
@@ -37,7 +37,7 @@ const MealList = ({ data, selectedTag, sortOption ,favourites,handleAdd,handleRe
           </span>
           <span className="bg-gray-100 text-gray-600 text-xs font-medium px-4 py-1 rounded flex flex-row items-center gap-1">
             <img src={steps} className="w-[20px] h-[20px]" />
-            {meal.steps}
+            {mealx.steps.length} Steps
           </span>
         </div>
 

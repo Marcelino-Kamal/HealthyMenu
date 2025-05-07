@@ -80,6 +80,27 @@ const meals = [
 
 const HealthyMenuPage = () => {
   const [favourites, setFavourites] = useState([]);
+  const [selectedTag, setChooseTag] = useState("All");
+  const [sortOption, setSortOption] = useState("calories");
+  const [error, setError] = useState(null);
+
+  const jwtToken = import.meta.env.VITE_JWT_TOKEN;
+  
+
+ 
+  useEffect(() => {
+    const getMeals = async () => {
+      try {
+        const mealsData = await fetchMeals(jwtToken);
+        setMeals(mealsData); 
+      } catch (err) {
+        setError("Failed to fetch meals");
+        console.error("Error fetching meals:", err);
+      }
+    };
+
+    getMeals();
+  }, [jwtToken]); // The hook will run once when the component mounts
 
   const handleAdd = (meal) => {
     if (!favourites.some((fav) => fav.id === meal.id)) {
