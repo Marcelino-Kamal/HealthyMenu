@@ -21,15 +21,15 @@ const FeaturedMeal = ({ data, handleAdd }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const card = (mealx) => (
     <SwiperSlide>
-      <div
-        className="flex flex-col md:flex-row gap-4 md:gap-6 max-w-5xl bg-white rounded-xl p-4 shadow-md "
-        onClick={() => {
-          setSelectedMeal(mealx);
-          setIsModalOpen(true);
-        }}
-      >
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6  bg-white rounded-xl p-4 shadow-md w-full ">
         {/* Image Section */}
-        <div className="w-full md:w-[35%] rounded-xl overflow-hidden">
+        <div
+          className="w-full md:w-[35%] rounded-xl overflow-hidden"
+          onClick={() => {
+            setSelectedMeal(mealx);
+            setIsModalOpen(true);
+          }}
+        >
           <img
             src={mealx.image}
             alt={mealx.name}
@@ -97,6 +97,12 @@ const FeaturedMeal = ({ data, handleAdd }) => {
               </div>
             </div>
           </div>
+          <button
+            onClick={() => handleAdd(mealx)}
+            className="bg-[#2682C0] text-white font-medium myfont text-sm mt-4 py-2 px-6 rounded-full w-full"
+          >
+            Add to favourites
+          </button>
         </div>
 
         {/* Nutrition Section */}
@@ -142,12 +148,6 @@ const FeaturedMeal = ({ data, handleAdd }) => {
           </div>
         </div>
       </div>
-      <button
-        onClick={() => handleAdd(mealx)}
-        className="bg-[#2682C0] text-white font-medium myfont text-sm mt-4 py-2 px-6 rounded-full w-full"
-      >
-        Add to favourites
-      </button>
     </SwiperSlide>
   );
   return (

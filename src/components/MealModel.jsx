@@ -17,7 +17,7 @@ const MealModal = ({ meal, isOpen, onClose, handleAdd }) => {
         <div className="flex-1 flex flex-col">
           {/* Header */}
           <div className="flex justify-between items-start">
-            <h2 className="text-2xl font-bold text-[#343C6A] leading-snug max-w-[70%]">
+            <h2 className="text-2xl myfont font-bold text-[#343C6A] leading-snug max-w-[70%]">
               {meal.name}
             </h2>
             <button
@@ -29,8 +29,8 @@ const MealModal = ({ meal, isOpen, onClose, handleAdd }) => {
           </div>
 
           {/* Metadata */}
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
-            <span className="bg-[#F44C4C] text-white px-3 py-1 rounded-md font-semibold">
+          <div className="mt-3  flex-wrap items-center gap-2 text-sm grid grid-cols-2 grid-rows-2">
+            <span className="bg-[#F44C4C] text-[#343C6A] px-3 py-1 rounded-md font-semibold myfont">
               {meal.meal}
             </span>
             <span className="text-gray-700">Difficulty: {meal.difficulty}</span>
