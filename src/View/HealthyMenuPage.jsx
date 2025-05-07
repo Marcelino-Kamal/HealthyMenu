@@ -1,122 +1,75 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FeaturedMealCard from "../components/FeaturedMeal";
 import Header from "../components/Header";
 import MealList from "../components/MealList";
-import toast from "../assets/toast.jpg";
-import salad from "../assets/salad.jpg";
-import shrimp from "../assets/shrimp.jpg";
 import AllMenuBar from "../components/AllMenuBar";
-
-const meals = [
-  {
-    id: 1,
-    title: "Avocado Toast with Poached Egg",
-    img: toast,
-    tag: "Breakfast",
-    color: "bg-blue-200",
-    difficulty: "Easy",
-    time: "15 min",
-    steps: "5 steps",
-    nutrition: {
-      calories: "320 kcal",
-      carbs: "30g",
-      protein: "14g",
-      fats: "18g",
-    },
-    healthScore: 9,
-  },
-  {
-    id: 2,
-    title: "Grilled Shrimp Tacos with Mango Salsa",
-    img: shrimp,
-    tag: "Lunch",
-    color: "bg-[#F44C4C]",
-    difficulty: "Medium",
-    time: "30 min",
-    steps: "8 steps",
-    nutrition: {
-      calories: "400 kcal",
-      carbs: "45g",
-      protein: "28g",
-      fats: "12g",
-    },
-    healthScore: 8,
-  },
-  {
-    id: 3,
-    title: "Baked Chicken Breast with Quinoa and Kale",
-    img: salad,
-    tag: "Dinner",
-    color: "bg-[#8676FE]",
-    difficulty: "Medium",
-    time: "1 hour",
-    steps: "25 steps",
-    nutrition: {
-      calories: "480 kcal",
-      carbs: "50g",
-      protein: "40g",
-      fats: "15g",
-    },
-    healthScore: 9,
-  },
-  {
-    id: 4,
-    title: "Salad",
-    img: salad,
-    tag: "Snack",
-    color: "bg-[#FFA257]",
-    difficulty: "Easy",
-    time: "45 min",
-    steps: "18 steps",
-    nutrition: {
-      calories: "280 kcal",
-      carbs: "38g",
-      protein: "10g",
-      fats: "7g",
-    },
-    healthScore: 5,
-  },
-];
-
+import { fetchMeals } from "../API/MealService";
 const HealthyMenuPage = () => {
+  const [meals, setMeals] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  const [selectedTag, setChooseTag] = useState("All");
+  const [sortOption, setSortOption] = useState("calories");
+  const [error, setError] = useState(null);
+
+  const jwtToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE5NDNmZDgxYzA3ZjE0OTQ1NWJmYTQiLCJpYXQiOjE3NDY0ODg2MjR9.wtsxZMWtW99WK5QRfy_5kwoVpf15W1Q3s7LCFDI2UEA"; // Replace this with the actual JWT token
+
+ 
+  useEffect(() => {
+    const getMeals = async () => {
+      try {
+        const mealsData = await fetchMeals(jwtToken);
+        setMeals(mealsData); 
+      } catch (err) {
+        setError("Failed to fetch meals");
+        console.error("Error fetching meals:", err);
+      }
+    };
+
+    getMeals();
+  }, [jwtToken]); // The hook will run once when the component mounts
 
   const handleAdd = (meal) => {
-    if (!favourites.some((fav) => fav.id === meal.id)) {
+    if (!favourites.some((fav) => fav.id === meal._id)) {
       setFavourites([...favourites, meal]);
     }
   };
 
   const handleRemove = (id) => {
-    setFavourites(favourites.filter((meal) => meal.id !== id));
+    setFavourites(favourites.filter((meal) => meal._id !== id));
   };
-  const [selectedTag, setChooseTag] = useState("All");
-  const [sortOption, setSortOption] = useState("calories");
+
   return (
     <>
       <Header></Header>
-      <FeaturedMealCard
-       data={meals}
-       favourites={favourites}
-       handleAdd={handleAdd}
-       handleRemove={handleRemove}
-        />
-      <h2 className="mt-[1%] myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">
-        All Menu
-      </h2>
-      <AllMenuBar
-        setChooseTag={setChooseTag}
-        selectedTag={selectedTag}
-        setSortOption={setSortOption}
-      />
-      <MealList
-        data={meals}
-        selectedTag={selectedTag}
-        sortOption={sortOption}
-        favourites={favourites}
-        handleAdd={handleAdd}
-        handleRemove={handleRemove}
-      ></MealList>
+      {error ? (
+        <div className="text-red-500">{error}</div>
+      ) : (
+        <>
+          <FeaturedMealCard
+            data={meals}
+            favourites={favourites}
+            handleAdd={handleAdd}
+            handleRemove={handleRemove}
+          />
+          <h2 className="mt-[1%] myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">
+            All Menu
+          </h2>
+          <AllMenuBar
+            setChooseTag={setChooseTag}
+            selectedTag={selectedTag}
+            setSortOption={setSortOption}
+          />
+          <MealList
+            data={meals}
+            selectedTag={selectedTag}
+            sortOption={sortOption}
+            favourites={favourites}
+            handleAdd={handleAdd}
+            handleRemove={handleRemove}
+          />
+        </>
+      )}
     </>
   );
 };
