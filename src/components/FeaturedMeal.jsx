@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -12,19 +12,27 @@ import calories from "../assets/calories.svg";
 import carbs from "../assets/carbs.svg";
 import fats from "../assets/fats.svg";
 import protiens from "../assets/protiens.svg";
-import arrows from "../assets/arrows.svg";
 import larr from "../assets/leftarr.svg";
 import rarr from "../assets/rarr.svg";
+import MealModal from "./MealModel";
 
 const FeaturedMeal = ({ data, handleAdd }) => {
-  const card = (meal) => (
+  const [selectedMeal, setSelectedMeal] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const card = (mealx) => (
     <SwiperSlide>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-6 max-w-5xl bg-white rounded-xl p-4 shadow-md ml-2 md:ml-4">
+      <div
+        className="flex flex-col md:flex-row gap-4 md:gap-6 max-w-5xl bg-white rounded-xl p-4 shadow-md "
+        onClick={() => {
+          setSelectedMeal(mealx);
+          setIsModalOpen(true);
+        }}
+      >
         {/* Image Section */}
         <div className="w-full md:w-[35%] rounded-xl overflow-hidden">
           <img
-            src={meal.img}
-            alt={meal.title}
+            src={mealx.image}
+            alt={mealx.name}
             className="w-full h-full object-cover object-center"
           />
         </div>
@@ -33,7 +41,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
         <div className="flex flex-col justify-between w-full md:w-[45%]">
           <div className="flex flex-col gap-3">
             <h3 className="myfont font-semibold text-base md:text-lg text-[#343C6A]">
-              {meal.title}
+              {mealx.name}
             </h3>
             <div className="bg-red-400 rounded-full myfont font-bold w-max px-3 py-1 text-[#343C6A] text-sm">
               {mealx.meal.charAt(0).toUpperCase() + mealx.meal.slice(1)}
@@ -55,7 +63,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
                 <div>
                   <p className="text-xs text-gray-500 myfont">Health Score</p>
                   <p className="text-sm font-semibold text-[#343C6A] myfont">
-                    {meal.healthScore}/10
+                    {mealx.healthScore}/10
                   </p>
                 </div>
               </div>
@@ -65,7 +73,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
                 <div>
                   <p className="text-xs text-gray-500 myfont">Cook Duration</p>
                   <p className="text-sm font-semibold text-[#343C6A] myfont">
-                    {meal.time}
+                    {mealx.duration}
                   </p>
                 </div>
               </div>
@@ -83,7 +91,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
           </div>
 
           <button
-            onClick={() => handleAdd(meal)}
+            onClick={() => handleAdd(mealx)}
             className="bg-[#2682C0] text-white font-medium myfont text-sm mt-4 py-2 px-6 rounded-full w-full"
           >
             Add to favourites
@@ -97,7 +105,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <div className="flex flex-col">
               <p className="text-xs text-gray-100 myfont">Calories</p>
               <p className="text-sm font-semibold text-white myfont">
-                {meal.nutrition.calories}
+                {mealx.calories}
               </p>
             </div>
           </div>
@@ -107,7 +115,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <div className="flex flex-col">
               <p className="text-xs text-gray-100 myfont">Carbs</p>
               <p className="text-sm font-semibold text-white myfont">
-                {meal.nutrition.carbs}
+                {mealx.carbs}
               </p>
             </div>
           </div>
@@ -117,7 +125,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <div className="flex flex-col">
               <p className="text-xs text-gray-100 myfont">Protein</p>
               <p className="text-sm font-semibold text-white myfont">
-                {meal.nutrition.protein}
+                {mealx.protein}
               </p>
             </div>
           </div>
@@ -127,7 +135,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
             <div className="flex flex-col">
               <p className="text-xs text-gray-100 myfont">Fats</p>
               <p className="text-sm font-semibold text-white myfont">
-                {meal.nutrition.fats}
+                {mealx.fats}
               </p>
             </div>
           </div>
@@ -164,8 +172,13 @@ const FeaturedMeal = ({ data, handleAdd }) => {
           }}
           className="max-w-5xl bg-white rounded-xl p-4 shadow-md"
         >
-          {data.map((meal) => card(meal))}
+          {data.map((mealx) => card(mealx))}
         </Swiper>
+        <MealModal
+          meal={selectedMeal}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       </div>
     </div>
   );
