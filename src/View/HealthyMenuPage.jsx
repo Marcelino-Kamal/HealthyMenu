@@ -3,7 +3,12 @@ import FeaturedMealCard from "../components/FeaturedMeal";
 import Header from "../components/Header";
 import MealList from "../components/MealList";
 import AllMenuBar from "../components/AllMenuBar";
-import { fetchMeals,getFavorites,deleteFavorite,addFavorite } from "../API/MealService";
+import {
+  fetchMeals,
+  getFavorites,
+  deleteFavorite,
+  addFavorite,
+} from "../API/MealService";
 import FavouriteList from "../components/FavouritesList";
 
 const HealthyMenuPage = () => {
@@ -27,7 +32,7 @@ const HealthyMenuPage = () => {
     };
 
     getMeals();
-  }, [jwtToken]); 
+  }, [jwtToken]);
   useEffect(() => {
     const getFavMeals = async () => {
       try {
@@ -42,24 +47,24 @@ const HealthyMenuPage = () => {
     getFavMeals();
   }, [jwtToken]);
 
-  const handleAdd = async(meal) => {
-    try{
+  const handleAdd = async (meal) => {
+    try {
       if (!favourites.some((fav) => fav._id === meal._id)) {
-        await addFavorite(meal._id,jwtToken)
+        await addFavorite(meal._id, jwtToken);
         setFavourites([...favourites, meal]);
       }
-    }catch{
-        console.log("failed to add");
+    } catch {
+      console.log("failed to add");
     }
   };
 
-  const handleRemove = async(id) => {
-      try{
-       await deleteFavorite(id,jwtToken)
-       setFavourites(favourites.filter((meal) => meal._id !== id));
-      }catch{
-        console.log("failed to delete")
-      }
+  const handleRemove = async (id) => {
+    try {
+      await deleteFavorite(id, jwtToken);
+      setFavourites(favourites.filter((meal) => meal._id !== id));
+    } catch {
+      console.log("failed to delete");
+    }
   };
 
   return (
@@ -67,12 +72,18 @@ const HealthyMenuPage = () => {
       <div className="flex">
         {/* 1st Section */}
         <div className="w-full">
-          <Header data={meals} handleAdd={handleAdd}/>
+          <Header data={meals} handleAdd={handleAdd} />
           {error ? (
             <div className="text-red-500">{error}</div>
           ) : (
             <>
               <FeaturedMealCard data={meals} handleAdd={handleAdd} />
+              <div className="sm:hidden  bg-amber-400">
+                <FavouriteList
+                  favourites={favourites}
+                  handleRemove={handleRemove}
+                />
+              </div>
               <h2 className="mt-[1%] myfont font-[600] text-[20px] text-[#343C6A] ml-[1%]">
                 All Menu
               </h2>
@@ -91,15 +102,11 @@ const HealthyMenuPage = () => {
               />
             </>
           )}
-        </div >
-          {/* 2nd Section */}
-          <div className="w-full">
-          <FavouriteList
-           favourites={favourites}
-           handleRemove={handleRemove}
-          />
-          </div>
-          
+        </div>
+        {/* 2nd Section */}
+        <div className="hidden md:block md:w-full ">
+          <FavouriteList favourites={favourites} handleRemove={handleRemove} />
+        </div>
       </div>
     </>
   );
