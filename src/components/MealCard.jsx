@@ -63,7 +63,7 @@ const MealCard = ({mealx, isFavourite, handleAdd, handleRemove}) => {
 
         <h2 className="text-lg font-bold text-gray-800">{mealx.name}</h2>
 
-        <div className="mt-2 flex items-center text-sm text-gray-700 divide-x divide-orange-300">
+        <div className="mt-2 flex items-center text-sm text-gray-700 divide-x divide-orange-300 flex-wrap">
           <div className="flex items-center gap-1 px-2">
             <img src={calories} className="w-4 h-4" />
             {mealx.calories} Kcal
