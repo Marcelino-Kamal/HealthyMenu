@@ -20,6 +20,19 @@ export const fetchMeals = async (jwtToken) => {
     throw error;
   }
 };
+export const FetchAMeal = async(mealId,jwtToken) =>{
+  try {
+    const response = await api.get(`/meals/${mealId}`, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching meal:', error);
+    throw error;
+  }
+};
 
 // =============================
 // Favorite Meals for Current User
