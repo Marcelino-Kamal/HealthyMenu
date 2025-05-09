@@ -9,10 +9,11 @@ const FavouriteList = ({favourites,handleRemove }) => {
         medium: 2,
         hard: 3,
       };
+    
     return(
         <>
-        <div className="w-full  bg-[#edf3f7] p-4">
-          <h2 className="text-2xl font-bold text-[#343C6A] mb-4 text-center ">
+        <div className="w-full justify-center bg-[#edf3f7] p-4 ">
+          <h2 className="text-2xl font-bold text-[#343C6A] mb-4 text-center  ">
             Favourite Meals
           </h2>
           {favourites.length > 0 ? (
@@ -50,7 +51,7 @@ const FavouriteList = ({favourites,handleRemove }) => {
               />)}
             </>
           ) : (
-            <p className="text-gray-500 text-center">No favourites yet.</p>
+            <p className="text-gray-500 text-center ml-35">No favourites yet.</p>
           )}
         </div>
         </>

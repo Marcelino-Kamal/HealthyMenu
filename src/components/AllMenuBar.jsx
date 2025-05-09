@@ -1,7 +1,7 @@
 const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
   return (
     <>
-      <div className="flex items-center justify-between bg-[#edf3f7] p-2 rounded-xl w-[64%]">
+      <div className="flex items-center justify-between bg-[#edf3f7] p-2 rounded-xl flex-wrap">
         {/* Filter Tabs */}
         <div className="flex items-center bg-white rounded-full px-5 py-1 space-x-10">
           <button

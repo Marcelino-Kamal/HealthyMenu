@@ -3,7 +3,7 @@ import FeaturedMealCard from "../components/FeaturedMeal";
 import Header from "../components/Header";
 import MealList from "../components/MealList";
 import AllMenuBar from "../components/AllMenuBar";
-import { fetchMeals } from "../API/MealService";
+import { fetchMeals,getFavorites,deleteFavorite,addFavorite } from "../API/MealService";
 import FavouriteList from "../components/FavouritesList";
 
 const HealthyMenuPage = () => {
@@ -27,16 +27,39 @@ const HealthyMenuPage = () => {
     };
 
     getMeals();
-  }, [jwtToken]); // The hook will run once when the component mounts
+  }, [jwtToken]); 
+  useEffect(() => {
+    const getFavMeals = async () => {
+      try {
+        const mealsData = await getFavorites(jwtToken);
+        setFavourites(mealsData);
+      } catch (err) {
+        setError("Failed to fetch meals");
+        console.error("Error fetching meals:", err);
+      }
+    };
 
-  const handleAdd = (meal) => {
-    if (!favourites.some((fav) => fav._id === meal._id)) {
-      setFavourites([...favourites, meal]);
+    getFavMeals();
+  }, [jwtToken]);
+
+  const handleAdd = async(meal) => {
+    try{
+      if (!favourites.some((fav) => fav._id === meal._id)) {
+        await addFavorite(meal._id,jwtToken)
+        setFavourites([...favourites, meal]);
+      }
+    }catch{
+        console.log("failed to add");
     }
   };
 
-  const handleRemove = (id) => {
-    setFavourites(favourites.filter((meal) => meal._id !== id));
+  const handleRemove = async(id) => {
+      try{
+       await deleteFavorite(id,jwtToken)
+       setFavourites(favourites.filter((meal) => meal._id !== id));
+      }catch{
+        console.log("failed to delete")
+      }
   };
 
   return (
@@ -44,7 +67,7 @@ const HealthyMenuPage = () => {
       <div className="flex">
         {/* 1st Section */}
         <div className="w-full">
-          <Header></Header>
+          <Header data={meals} handleAdd={handleAdd}/>
           {error ? (
             <div className="text-red-500">{error}</div>
           ) : (
@@ -68,12 +91,15 @@ const HealthyMenuPage = () => {
               />
             </>
           )}
-        </div>
+        </div >
           {/* 2nd Section */}
+          <div className="w-full">
           <FavouriteList
            favourites={favourites}
            handleRemove={handleRemove}
           />
+          </div>
+          
       </div>
     </>
   );
