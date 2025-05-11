@@ -157,7 +157,7 @@ const FeaturedMeal = ({ data, handleAdd }) => {
           Featured Meals
         </h2>
         {/* Button Wrapper */}
-        <div className="ml-[780px]">
+        <div className="ml-[780px] w-[10%]">
           {/* Prev Button */}
           <button className="hover:bg-blue-500 rounded-4xl" id="custom-prev">
             <img src={larr} className="w-6 h-6" alt="Prev arrow" />

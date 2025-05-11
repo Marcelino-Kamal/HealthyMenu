@@ -69,7 +69,7 @@ const HealthyMenuPage = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex flex-wrap">
         {/* 1st Section */}
         <div className="w-full">
           <Header data={meals} handleAdd={handleAdd} />
