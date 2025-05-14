@@ -49,11 +49,11 @@ const Header = ({ data, handleAdd }) => {
           />
         </form>
         {/* Search output */}
-        <div className="mt-4 max-h-[50px] overflow-y-auto space-y-2">
+        <div className=" max-h-[50px] overflow-y-auto space-y-2">
           {filteredMeal.map((meal) => (
             <div
               key={meal._id}
-              className="p-2 border rounded mb-2 bg-white"
+              className="p-2 border rounded  bg-white"
               onClick={() => {
                 setSelectedMeal(meal);
                 setIsModalOpen(true);
