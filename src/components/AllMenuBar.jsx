@@ -57,7 +57,7 @@ const AllMenuBar = ({ setChooseTag,selectedTag,setSortOption }) => {
         </div>
 
         {/* Sort Dropdown */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 ">
           <span className="text-sm text-gray-500">Sort by:</span>
           <select className="bg-white border border-gray-300 text-sm rounded-md px-3 py-1 text-gray-700 focus:outline-none" onChange={(e) => setSortOption(e.target.value)}>
             <option value="calories">Calories</option>

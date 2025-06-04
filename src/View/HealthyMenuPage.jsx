@@ -71,7 +71,7 @@ const HealthyMenuPage = () => {
     <>
       <div className="flex flex-wrap">
         {/* 1st Section */}
-        <div className="w-full">
+        <div className="w-2/3">
           <Header data={meals} handleAdd={handleAdd} />
           {error ? (
             <div className="text-red-500">{error}</div>
@@ -104,7 +104,7 @@ const HealthyMenuPage = () => {
           )}
         </div>
         {/* 2nd Section */}
-        <div className="hidden md:block md:w-full ">
+        <div className="hidden md:block md:w-1/3">
           <FavouriteList favourites={favourites} handleRemove={handleRemove} />
         </div>
       </div>
